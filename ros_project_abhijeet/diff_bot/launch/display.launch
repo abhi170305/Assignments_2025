@@ -1,0 +1,8 @@
+
+<launch>
+    <param name="diff_bot" command="$(find xacro)/xacro '$(find diff_bot)/urdf/differ.urdf'" />
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+
+    <node pkg="gazebo_ros" type="spawn_model" name="spawn_urdf" args="-param diff_bot -urdf -model differ" output="screen"/>
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+</launch>
